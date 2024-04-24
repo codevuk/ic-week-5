@@ -6,7 +6,7 @@ public class TodoViewModel
 
     public string Item { get; set; }
 
-    public DateTime? DueOn { get; set; } = null;
-
     public bool IsCompleted { get; set; }
+
+    public DateTime? DueOn { get; set; }
 }

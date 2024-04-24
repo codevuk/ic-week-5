@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using TodoAppWeek4.Models;
 using TodoAppWeek4.ViewModels;
@@ -7,18 +8,22 @@ namespace TodoAppWeek4.Services;
 public class TodoService : ITodoService
 {
     private readonly TodoDbContext _context;
+    private readonly IMapper _mapper;
 
-    public TodoService(TodoDbContext context)
+    public TodoService(TodoDbContext context, IMapper mapper)
     {
         _context = context;
+        _mapper = mapper;
     }
     
-    public async Task<IEnumerable<Todo>> GetTodos()
+    public async Task<IEnumerable<TodoViewModel>> GetTodos()
     {
-        return await _context.Todos.ToListAsync();
+        var todos = await _context.Todos.ToListAsync();
+
+        return _mapper.Map<IEnumerable<TodoViewModel>>(todos);
     }
 
-    public async Task<Todo> GetTodo(int id)
+    public async Task<TodoViewModel> GetTodo(int id)
     {
         var todo = await _context.Todos.FirstOrDefaultAsync(record => record.Id == id);
 
@@ -27,7 +32,7 @@ public class TodoService : ITodoService
             throw new Exception("Todo not found");
         }
 
-        return todo;
+        return _mapper.Map<TodoViewModel>(todo);
     }
 
     public async Task<Todo> CreateTodo(CreateTodoRequest request)

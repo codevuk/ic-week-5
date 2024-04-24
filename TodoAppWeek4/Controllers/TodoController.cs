@@ -22,9 +22,9 @@ public class TodoController : Controller
     
     public async Task<IActionResult> Details(int id)
     {
-        var todos = await _todoService.GetTodo(id);
+        var todo = await _todoService.GetTodo(id);
 
-        return View(todos);
+        return View(todo);
     }
     
     public IActionResult Create()

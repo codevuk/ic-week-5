@@ -5,9 +5,9 @@ namespace TodoAppWeek4.Services;
 
 public interface ITodoService
 {
-    Task<IEnumerable<Todo>> GetTodos();
+    Task<IEnumerable<TodoViewModel>> GetTodos();
 
-    Task<Todo> GetTodo(int id);
+    Task<TodoViewModel> GetTodo(int id);
 
     Task<Todo> CreateTodo(CreateTodoRequest request);
     

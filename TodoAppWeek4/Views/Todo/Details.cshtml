@@ -1,4 +1,4 @@
-@model TodoAppWeek4.Models.Todo
+@model TodoAppWeek4.ViewModels.TodoViewModel;
 
 @{
     ViewData["Title"] = "Details";
@@ -28,18 +28,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.IsCompleted)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreatedAt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreatedAt)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UpdatedAt)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UpdatedAt)
         </dd>
     </dl>
 </div>
